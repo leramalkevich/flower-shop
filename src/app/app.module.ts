@@ -11,6 +11,8 @@ import {provideHttpClient} from '@angular/common/http';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
+import {SharedModule} from './shared/shared.module';
+import {CarouselModule} from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import {MatMenuModule} from '@angular/material/menu';
     BrowserModule,
     MatSnackBarModule,
     MatMenuModule,
+    SharedModule,
+    CarouselModule,
     AppRoutingModule
   ],
   providers: [
