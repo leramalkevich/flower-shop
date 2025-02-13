@@ -43,59 +43,58 @@
             margin-left: 8px;
           }
         }
+      }
+      .catalog-sorting {
+        width: 257px;
+        box-sizing: border-box;
+        position: relative;
+        font-size: 16px;
 
-        .catalog-sorting {
-          width: 257px;
+        .catalog-sorting-head {
+          display: flex;
+          align-items: center;
+          padding: 12px 0 12px 23px;
+          justify-content: space-between;
+          color: $gray-text-color;
+
+          span {
+            margin-right: 8px;
+          }
+        }
+
+        .catalog-sorting-body {
+          position: absolute;
+          width: 100%;
           box-sizing: border-box;
-          position: relative;
-          font-size: 16px;
+          z-index: 3;
+          display: none;
+          padding: 12px 23px;
+          background: #F5F5F5;
+          border-radius: 0 0 5px 5px;
+          color: #8E8E8E;
 
+          .catalog-sorting-item {
+            margin-bottom: 14px;
+            cursor: pointer;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            &.active {
+              color: #313131;
+            }
+          }
+        }
+        &.open {
           .catalog-sorting-head {
-            display: flex;
-            align-items: center;
-            padding: 12px 0 12px 23px;
-            justify-content: space-between;
-            color: $gray-text-color;
-
-            span {
-              margin-right: 8px;
-            }
+            color: #000000;
+            background: #EBEBEB;
+            border-radius:  5px 5px 0 0;
+            padding-right: 23px;
           }
-
           .catalog-sorting-body {
-            position: absolute;
-            width: 100%;
-            box-sizing: border-box;
-            z-index: 3;
-            display: none;
-            padding: 12px 23px;
-            background: #F5F5F5;
-            border-radius: 0 0 5px 5px;
-            color: #8E8E8E;
-
-            .catalog-sorting-item {
-              margin-bottom: 14px;
-              cursor: pointer;
-
-              &:last-child {
-                margin-bottom: 0;
-              }
-
-              &.active {
-                color: #313131;
-              }
-            }
-          }
-          &.open {
-            .catalog-sorting-head {
-              color: #000000;
-              background: #EBEBEB;
-              border-radius:  5px 5px 0 0;
-              padding-right: 23px;
-            }
-            .catalog-sorting-body {
-              display: block;
-            }
+            display: block;
           }
         }
       }
@@ -110,63 +109,6 @@
         min-width: 257px;
         margin-right: 58px;
 
-        .catalog-filter {
-          border-radius: 5px;
-          margin-bottom: 12px;
-          font-size: 16px;
-          color: $gray-text-color;
-
-          .catalog-filter-head {
-            background: #B6D5B9;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 23px;
-            cursor: pointer;
-
-            svg {
-              margin-top: 2px;
-            }
-          }
-
-          &.open .catalog-filter-head {
-            border-radius: 5px 5px 0 0;
-          }
-
-          .catalog-filter-body {
-            display: none;
-            border: 1px solid #B6D5B9;
-            border-radius: 0 0 5px 5px;
-            padding: 12px 16px;
-
-            .catalog-filter-checkbox {
-              display: flex;
-              align-items: baseline;
-              margin-bottom: 19px;
-              line-height: 20.8px;
-
-              &:last-child {
-                margin-bottom: 0;
-              }
-
-              input {
-                margin-right: 10px;
-
-              }
-            }
-
-            .catalog-filter-from-to {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-            }
-          }
-
-          &.open .catalog-filter-body {
-            display: block;
-          }
-        }
       }
 
       .catalog-products {
@@ -223,16 +165,4 @@
       }
     }
   }
-}
-
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
-  -webkit-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
-
-input[type=number] {
-  -moz-appearance: textfield; /* Firefox */
 }
