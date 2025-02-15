@@ -57,6 +57,7 @@ html, body {
   &.button-icon {
     display: flex;
     justify-content: center;
+
     span {
       margin-left: 16px;
     }
@@ -65,6 +66,28 @@ html, body {
   &:disabled {
     background: gray;
     cursor: not-allowed;
+  }
+
+  &.button-in-cart span {
+    &:first-child {
+      display: block;
+    }
+
+    &:last-child {
+      display: none;
+    }
+  }
+
+  &:hover {
+    &.button-in-cart span {
+      &:first-child {
+        display: none;
+      }
+
+      &:last-child {
+        display: block;
+      }
+    }
   }
 }
 

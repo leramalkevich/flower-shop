@@ -6,6 +6,11 @@
   box-sizing: border-box;
   position: relative;
 
+  &.is-light {
+    height: auto;
+    cursor: pointer;
+  }
+
   .product-card-favorite {
     position: absolute;
     top: 12px;

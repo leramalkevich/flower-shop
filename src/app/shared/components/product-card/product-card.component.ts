@@ -1,6 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ProductType} from '../../../../types/product.type';
 import {environment} from '../../../../environments/environment';
+import {CartService} from '../../services/cart.service';
+import {CartType} from '../../../../types/cart.type';
 
 @Component({
   selector: 'product-card',
@@ -8,8 +10,49 @@ import {environment} from '../../../../environments/environment';
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
 })
-export class ProductCardComponent {
-  @Input()product!:ProductType;
+export class ProductCardComponent implements OnInit {
+  @Input() product!: ProductType;
   serverStaticPath = environment.serverStaticPath;
   count: number = 1;
+  @Input() isLight: boolean = false;
+  isInCart: boolean = false;
+  @Input() countInCart: number | undefined = 0;
+
+  constructor(private cartService: CartService) {
+  }
+
+  ngOnInit():void {
+    if (this.countInCart && this.countInCart > 1) {
+      this.count = this.countInCart;
+    }
+  }
+
+  addToCart() {
+    this.cartService.updateCart(this.product.id, this.count)
+      .subscribe((data: CartType) => {
+        this.isInCart = true;
+        this.countInCart = this.count;
+      });
+  }
+
+  updateCount(value: number) {
+    this.count = value;
+    if (this.countInCart) {
+      this.cartService.updateCart(this.product.id, this.count)
+        .subscribe((data: CartType) => {
+          this.isInCart = true;
+          this.countInCart = this.count;
+        });
+    }
+
+  }
+
+  removeFromCart() {
+    this.cartService.updateCart(this.product.id, 0)
+      .subscribe((data: CartType) => {
+        this.countInCart = 0;
+        this.isInCart = false;
+        this.count = 1;
+      });
+  }
 }
