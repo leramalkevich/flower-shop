@@ -108,30 +108,6 @@
   padding-top: 120px;
   padding-bottom: 130px;
 
-  .carousel-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 50px;
-
-    .carousel-title {
-      @include head-lora-32;
-    }
-
-    .carousel-arrows {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      a {
-        cursor: pointer;
-
-        &:first-child {
-          margin-right: 30px;
-        }
-      }
-    }
-  }
 }
 
 .info {
