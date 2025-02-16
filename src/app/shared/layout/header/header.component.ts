@@ -5,6 +5,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 import {CategoryWithTypeType} from '../../../../types/category-with-type.type';
 import {CartService} from '../../services/cart.service';
+import {DefaultResponseType} from '../../../../types/default-response.type';
+import {CartType} from '../../../../types/cart.type';
 
 @Component({
   selector: 'app-header',
@@ -27,8 +29,12 @@ export class HeaderComponent implements OnInit {
       this.isLogged = isLoggedIn;
     });
     this.cartService.getCartCount()
-      .subscribe(data => {
-        this.count = data.count;
+      .subscribe((data:DefaultResponseType|{ count: number }) => {
+        if ((data as DefaultResponseType).error !== undefined) {
+          throw new Error((data as DefaultResponseType).message);
+        }
+
+        this.count = (data as { count: number }).count;
       });
 
     this.cartService.count$
