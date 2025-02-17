@@ -7,7 +7,7 @@ import {InfoComponent} from './info/info.component';
 const routes: Routes = [
   {path: 'favorites', component: FavouriteComponent},
   {path: 'orders', component: OrdersComponent},
-  {path: 'info', component: InfoComponent},
+  {path: 'profile', component: InfoComponent},
 ];
 
 @NgModule({
