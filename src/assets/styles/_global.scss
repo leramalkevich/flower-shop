@@ -189,3 +189,8 @@ a.button {
   padding: 0 !important;
 }
 
+.mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle,
+.mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+  stroke: #648F64!important;
+}
+
