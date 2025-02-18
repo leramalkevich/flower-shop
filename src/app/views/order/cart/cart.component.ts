@@ -60,6 +60,7 @@ export class CartComponent implements OnInit {
           throw new Error((data as DefaultResponseType).message);
         }
         this.cart = data as CartType;
+
         this.calculateTotal();
       });
   }

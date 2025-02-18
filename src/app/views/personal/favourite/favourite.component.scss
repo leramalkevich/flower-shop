@@ -1,5 +1,6 @@
 @import "../../../../assets/styles/variables";
 @import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/global";
 
 .favourite {
   padding-top: 50px;
@@ -53,15 +54,23 @@
         }
         .favourite-product-price {
           width: 100px;
-          margin-right: 193px;
+          //margin-right: 193px;
+          margin-right: 73px;
           font-family: Montserrat, sans-serif;
           font-weight: 600;
           font-size: 22px;
           color: $gray-text-color;
         }
-        .favourite-product-action button {
-          width: 160px;
+        .favourite-product-amount-inCart {
+          width: 100px;
+          margin-right: 20px;
+          font-size: 20px;
+          color: $gray-text-color;
         }
+        .favourite-product-action button {
+            width: 160px;
+        }
+
         .favourite-product-remove {
           margin-left: 60px;
           cursor: pointer;

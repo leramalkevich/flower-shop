@@ -50,9 +50,11 @@ export class DetailComponent implements OnInit {
     nav: false
   }
   private _snackBar = inject(MatSnackBar);
+  isLogged:boolean = false;
 
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private cartService: CartService,
               private favouriteService: FavouriteService, private authService:AuthService) {
+    this.isLogged = this.authService.getIsLoggedIn();
   }
 
   ngOnInit(): void {

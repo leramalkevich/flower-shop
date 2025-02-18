@@ -12,8 +12,16 @@
         <div class="favourite-product-image" style="background-image: url({{serverStaticPath + product.image}})"></div>
         <div class="favourite-product-name">{{product.name}}</div>
         <div class="favourite-product-price">{{product.price}} BYN</div>
+        <div class="favourite-product-amount-inCart">
+          <count-selector *ngIf="product.inCart && product.quantity" [count]="product.quantity" (onCountChange)="updateCount(product.id,$event)"></count-selector>
+        </div>
         <div class="favourite-product-action">
-          <button class="button" routerLink="/product/{{product.url}}">Открыть</button>
+<!--          <button class="button" routerLink="/product/{{product.url}}">Открыть</button>-->
+          <button class="button" *ngIf="!product.inCart" (click)="addToCart(product.id)">В корзину</button>
+          <button class="button button-transparent button-in-cart" *ngIf="product.inCart" (click)="removeFromCart(product.id)">
+            <span>В корзине</span>
+            <span>Удалить</span>
+          </button>
         </div>
         <div class="favourite-product-remove" (click)="removeFromFavourites(product.id)">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
