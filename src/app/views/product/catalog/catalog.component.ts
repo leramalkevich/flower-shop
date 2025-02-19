@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ProductService} from '../../../shared/services/product.service';
 import {ProductType} from '../../../../types/product.type';
 import {CategoryService} from '../../../shared/services/category.service';
@@ -134,7 +134,6 @@ export class CatalogComponent implements OnInit {
                   this.pages.push(i);
                 }
 
-
                 if (this.cart && this.cart.items.length > 0) {
                   this.products = data.items.map(product => {
                     if (this.cart) {
@@ -156,7 +155,7 @@ export class CatalogComponent implements OnInit {
                       product.isInFavourite = true;
                     }
                     return product;
-                  })
+                  });
                 }
               });
           });
@@ -206,9 +205,21 @@ export class CatalogComponent implements OnInit {
   openNextPage() {
     if (this.activeParams.page && this.activeParams.page < this.pages.length) {
       this.activeParams.page++;
+    } else if(this.activeParams.page === undefined && this.pages && this.pages.length > 1) {
+      this.activeParams.page = 2;
+    }
+    if (this.activeParams.page) {
       this.router.navigate(['/catalog'], {
         queryParams: this.activeParams
       });
+    }
+  }
+
+  // отслеживание клика на странице, чтобы блок сортировки скрывался
+  @HostListener('document:click', ['$event'])
+  click(event:Event) {
+    if (this.sortingOpen && (event.target as HTMLElement).className.indexOf('catalog-sorting-item') === -1) {
+      this.sortingOpen = false;
     }
   }
 
